@@ -1,5 +1,9 @@
 # Build Snap packages with Docker
 
+Armhf Snap builder: [![](https://images.microbadger.com/badges/image/dawidcrivelli/snapcraft_armhf.svg)](https://microbadger.com/images/dawidcrivelli/snapcraft_armhf "armhf")
+
+Amd64 Snap builder: [![](https://images.microbadger.com/badges/image/dawidcrivelli/snapcraft_armhf:latest-amd64.svg)](https://microbadger.com/images/dawidcrivelli/snapcraft_armhf:latest-amd64 "amd64")
+
 ## Install Docker
 Install docker
 ```
@@ -12,11 +16,11 @@ docker run --rm --privileged multiarch/qemu-user-static:register --reset
 ## Build with snapcraft
 
 
-Build the two docker images:
+Build the two docker images (or skip this step to get them from dockerhub):
 
 ```
-docker build -t snaparm . 
-docker build -t snapx86 -f Dockerfile.amd64 .
+docker build -t dawidcrivelli/snacraft_armhf:latest . 
+docker build -t dawidcrivelli/snacraft_armhf:latest-amd64 -f Dockerfile.amd64 .
 ```
 
 Copy the sources (here supposed to be in the `src` folder) to a subdirectory, since Snapcraft clutters the working directory:
@@ -28,8 +32,8 @@ cp -ru src/ build/amd64
 
 Build the proper snaps:
 ```
-docker run -d --rm -v $PWD/build/armhf:/build snaparm sh -c "snapcraft clean && snapcraft"
-docker run -d --rm -v $PWD/build/amd64:/build snapx86 sh -c "snapcraft clean && snapcraft"
+docker run -d --rm -v $PWD/build/armhf:/build dawidcrivelli/snacraft_armhf:latest sh -c "snapcraft clean && snapcraft"
+docker run -d --rm -v $PWD/build/amd64:/build dawidcrivelli/snacraft_armhf:latest-amd64 sh -c "snapcraft clean && snapcraft"
 ```
 
 ## Example
