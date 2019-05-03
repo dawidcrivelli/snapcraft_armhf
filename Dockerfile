@@ -2,7 +2,7 @@
 FROM multiarch/ubuntu-core:armhf-xenial as snaparm
 
 # Prepare the cross build binaries
-COPY resin-xbuild cross-build-start cross-build-end qemu-arm-static /usr/bin/
+COPY bin/* /usr/bin/
 # NPM settings for permissions under snap and cross-compilation
 COPY npmrc /root/.npmrc
 WORKDIR /build
