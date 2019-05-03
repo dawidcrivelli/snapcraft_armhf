@@ -19,11 +19,11 @@ docker build -t snapx86 --target snapx86 .
 docker build -t snaparm --target snaparm .
 ```
 
-Copy Node.js sources to a subdirectory, since Snapcraft clutters the working directory:
+Copy the sources (here supposed to be in the `src` folder) to a subdirectory, since Snapcraft clutters the working directory:
 ```
 mkdir -p build/{armhf,amd64}
-cp -ru *.js package*.json snap build/armhf
-cp -ru *.js package*.json snap build/amd64
+cp -ru src/ build/armhf
+cp -ru src/ build/amd64
 ```
 
 Build the proper snaps:
