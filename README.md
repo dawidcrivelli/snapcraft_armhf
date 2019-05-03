@@ -15,8 +15,8 @@ docker run --rm --privileged multiarch/qemu-user-static:register --reset
 Build the two docker images:
 
 ```
-docker build -t snapx86 --target snapx86 .
-docker build -t snaparm --target snaparm .
+docker build -t snaparm . 
+docker build -t snapx86 -f Dockerfile.amd64 .
 ```
 
 Copy the sources (here supposed to be in the `src` folder) to a subdirectory, since Snapcraft clutters the working directory:
