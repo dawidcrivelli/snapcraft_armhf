@@ -9,6 +9,6 @@ WORKDIR /build
 
 # Install snapcraft and compilers
 RUN [ "cross-build-start" ]
-RUN apt-get update && apt-get -y install snapcraft bluez libbluetooth-dev build-essential git libudev-dev
+RUN apt-get update && apt-get -y install snapcraft bluez libbluetooth-dev build-essential git libudev-dev zlib1g-dev
 
 CMD snapcraft clean && snapcraft
